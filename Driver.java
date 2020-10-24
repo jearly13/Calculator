@@ -50,7 +50,7 @@ public class Driver extends JFrame{
         operatorPanel = new JPanel();
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         operatorPanel.setLayout(new GridLayout(4, 4, 4, 4));
-        String[] operators = {"+", "-", "*", "/","log","ln","cot","sin","cos","tan","C","-/+","="};
+        String[] operators = {"+", "-", "*", "/","log","ln","cot","sin","cos","tan","^","-/+","=","C"};
         for (int i = 0; i < operators.length; i++) {
             button = new JButton(operators[i]);
             button.addActionListener(operatorListener);
@@ -127,6 +127,8 @@ public class Driver extends JFrame{
                         problem.multiply(textBoxValue);
                     } else if (operator.equals("/")) {
                         problem.divide(textBoxValue);
+                    } else if (operator.equals("^")) {
+                        problem.power(textBoxValue);
                     }
 
                     questionText.setText("" + problem.getTotalString());
@@ -169,18 +171,22 @@ public class Driver extends JFrame{
         public void divide(String num) {
             solution /= convertToNumber(num);
         }
+        public void power(String num){
+            solution = Math.pow(solution, convertToNumber(num));
+        }
         private double convertToNumber(String num) {
             return Double.parseDouble(num);
         }
     }
+
     public static void main(String[] args){
-        try{
+        try {
             JFrame app = new Driver();
             app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             app.setVisible(true);
-        } catch (Exception e){
+        } catch(Exception e){
             e.getMessage();
-        }    
+        }
     }
 }
 
