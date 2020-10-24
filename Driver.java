@@ -173,14 +173,14 @@ public class Driver extends JFrame{
             return Double.parseDouble(num);
         }
     }
-    /*public static double complexSolution(String p){
-
-    }*/
     public static void main(String[] args){
+        try{
             JFrame app = new Driver();
             app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             app.setVisible(true);
-
+        } catch (Exception e){
+            e.getMessage();
+        }    
     }
 }
 
